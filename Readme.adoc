@@ -1,0 +1,7 @@
+image::Screenshot 2024-02-16 at 03.24.31.png[]
+
+== How to run
+
+docker build -t hostfully .
+docker run -p port_on_machine:8080 hostfully
+

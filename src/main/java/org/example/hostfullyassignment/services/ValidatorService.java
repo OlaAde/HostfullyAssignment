@@ -23,11 +23,9 @@ public class ValidatorService {
             throw new InvalidPayloadException("The start date is after is end date");
         }
 
-        Long numberOfBookingsInDateRange = bookingRepository.countAllByPropertyAndStatusAndStartDateBetweenOrEndDateIsBetween(
-                property,
+        Long numberOfBookingsInDateRange = bookingRepository.countBookingsCollidingWithDate(
+                property.getId(),
                 BookingStatus.BOOKED,
-                startDate,
-                endDate,
                 startDate,
                 endDate);
 
@@ -35,10 +33,8 @@ public class ValidatorService {
             throw new InvalidPayloadException("There is an overlapping booking in the proposed date range");
         }
 
-        Long numberOfBlocksInDateRange = blockRepository.countAllByPropertyAndStartDateBetweenOrEndDateIsBetween(
-                property,
-                startDate,
-                endDate,
+        Long numberOfBlocksInDateRange = blockRepository.countBlocksCollidingWithDate(
+                property.getId(),
                 startDate,
                 endDate);
 
@@ -52,11 +48,9 @@ public class ValidatorService {
             throw new InvalidPayloadException("The start date is after is end date");
         }
 
-        List<Booking> bookingsInDateRange = bookingRepository.getAllByPropertyAndStatusAndStartDateBetweenOrEndDateIsBetween(
-                property,
+        List<Booking> bookingsInDateRange = bookingRepository.findBookingsCollidingWithDate(
+                property.getId(),
                 BookingStatus.BOOKED,
-                startDate,
-                endDate,
                 startDate,
                 endDate);
 
@@ -65,10 +59,8 @@ public class ValidatorService {
             throw new InvalidPayloadException("There is an overlapping booking in the proposed date range");
         }
 
-        Long numberOfBlocksInDateRange = blockRepository.countAllByPropertyAndStartDateBetweenOrEndDateIsBetween(
-                property,
-                startDate,
-                endDate,
+        Long numberOfBlocksInDateRange = blockRepository.countBlocksCollidingWithDate(
+                property.getId(),
                 startDate,
                 endDate);
 
@@ -82,11 +74,9 @@ public class ValidatorService {
             throw new InvalidPayloadException("The start date is after is end date");
         }
 
-        Long numberOfBookingsInDateRange = bookingRepository.countAllByPropertyAndStatusAndStartDateBetweenOrEndDateIsBetween(
-                property,
+        Long numberOfBookingsInDateRange = bookingRepository.countBookingsCollidingWithDate(
+                property.getId(),
                 BookingStatus.BOOKED,
-                startDate,
-                endDate,
                 startDate,
                 endDate);
 
@@ -94,10 +84,8 @@ public class ValidatorService {
             throw new InvalidPayloadException("There is an overlapping booking in the proposed date range");
         }
 
-        List<Block> blocksInDateRange = blockRepository.getAllByPropertyAndStartDateBetweenOrEndDateIsBetween(
-                property,
-                startDate,
-                endDate,
+        List<Block> blocksInDateRange = blockRepository.findBlocksCollidingWithDate(
+                property.getId(),
                 startDate,
                 endDate);
 
